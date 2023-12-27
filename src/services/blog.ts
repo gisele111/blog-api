@@ -28,7 +28,6 @@ const singleBlog = await prisma.blog.findUnique({
 });
 return singleBlog
 }
-
 const updateSingleBlog = async(singleId:number,body:typeBody)=>{
  const updatedData = await prisma.blog.update({
     where:{id:singleId},

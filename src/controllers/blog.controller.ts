@@ -1,7 +1,6 @@
 import { Request,Response } from 'express';
 import {createBlog,getAll,getSingleBlog, updateSingleBlog} from '../services/blog';
 
-
 const createController = async (req:Request,res:Response)=>{
     const {title,content} = req.body;
     try {
