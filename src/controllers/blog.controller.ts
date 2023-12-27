@@ -1,5 +1,5 @@
 import { Request,Response } from 'express';
-import {createBlog,getAll,getSingleBlog, updateSingleBlog} from '../services/blog';
+import {createBlog,deleteBlog,getAll,getSingleBlog, updateSingleBlog} from '../services/blog';
 
 const createController = async (req:Request,res:Response)=>{
     const {title,content} = req.body;
@@ -30,10 +30,18 @@ const updateData = async(req:Request,res:Response)=>{
   res.status(200).json({status:'sucess',updated})
 }
 
+const deleteData = async(req:Request,res:Response)=>{
+    const {id} = req.params;
+    const intId = parseInt(id);
+  const deleted= await deleteBlog(intId);
+  res.status(200).json({status:'sucess',deleted})
+}
+
 export {
     createController,
     getData,
     single,
-    updateData
+    updateData,
+    deleteData
 }
 

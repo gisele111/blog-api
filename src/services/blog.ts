@@ -35,9 +35,18 @@ const updateSingleBlog = async(singleId:number,body:typeBody)=>{
  });
  return updatedData;
 }
+
+const deleteBlog = async(singleId:number)=>{
+    const deleted = await prisma.blog.delete({
+        where:{id:singleId}
+    });
+    return deleted;
+}
+
 export {
     createBlog,
     getAll,
     getSingleBlog,
-    updateSingleBlog
+    updateSingleBlog,
+    deleteBlog
 };
