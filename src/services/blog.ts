@@ -11,4 +11,14 @@ const createBlog = async (title:string,content:string)=>{
     return createdData
 }
 
-export default createBlog;
+// const getAll 
+
+const getAll = async()=>{
+    const allData = await prisma.blog.findMany();
+    return allData;
+}
+
+export {
+    createBlog,
+    getAll
+};
