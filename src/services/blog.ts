@@ -1,6 +1,12 @@
 import { PrismaClient } from '@prisma/client'
+import { connect } from 'http2';
+import { title } from 'process';
 const prisma = new PrismaClient()
 
+interface typeBody {
+    title:string,
+    content:string
+}
 const createBlog = async (title:string,content:string)=>{
     const createdData = await prisma.blog.create({
         data:{
@@ -23,8 +29,16 @@ const singleBlog = await prisma.blog.findUnique({
 return singleBlog
 }
 
+const updateSingleBlog = async(singleId:number,body:typeBody)=>{
+ const updatedData = await prisma.blog.update({
+    where:{id:singleId},
+    data:body
+ });
+ return updatedData;
+}
 export {
     createBlog,
     getAll,
-    getSingleBlog
+    getSingleBlog,
+    updateSingleBlog
 };
