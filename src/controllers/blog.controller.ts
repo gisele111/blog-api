@@ -1,6 +1,5 @@
 import { Request,Response } from 'express';
-import {createBlog,getAll,getSingleBlog} from '../services/blog';
-
+import {createBlog,getAll,getSingleBlog, updateSingleBlog} from '../services/blog';
 
 const createController = async (req:Request,res:Response)=>{
     const {title,content} = req.body;
@@ -24,9 +23,17 @@ const single = async(req:Request,res:Response)=>{
     res.status(200).json({blog:blog});
 }
 
+const updateData = async(req:Request,res:Response)=>{
+    const {id} = req.params;
+    const intId = parseInt(id);
+  const updated= await updateSingleBlog(intId,req.body);
+  res.status(200).json({status:'sucess',updated})
+}
+
 export {
     createController,
     getData,
-    single
+    single,
+    updateData
 }
 
