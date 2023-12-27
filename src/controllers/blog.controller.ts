@@ -1,7 +1,5 @@
 import { Request,Response } from 'express';
 import {createBlog,getAll} from '../services/blog';
-import { get } from 'http';
-
 
 const createController = async (req:Request,res:Response)=>{
     const {title,content} = req.body;
@@ -12,7 +10,6 @@ const createController = async (req:Request,res:Response)=>{
     res.status(500).json({ error: 'Internal Server Error' });
     }
 }
-
 const getData = async(req:Request,res:Response)=>{
     const allData  = await getAll();
     res.status(200).json({data:allData});
@@ -22,4 +19,3 @@ export {
     createController,
     getData
 }
-

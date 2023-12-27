@@ -7,7 +7,6 @@ app.get('/',(req,res)=>{
     res.send('hello world');
 });
 
-
 app.use('/api',blogRoutes)
 const port = 3000;
 
