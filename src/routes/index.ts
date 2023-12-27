@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/create',createController);
 router.get('/get',getData);
 router.get('/get/:id',single);
-router.get('/update/:id',updateData);
+router.patch('/update/:id',updateData);
 
 
 export default router;
