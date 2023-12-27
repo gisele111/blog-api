@@ -1,5 +1,5 @@
 import express from 'express';
-import blogRoute from './routes/index';
+import blogRoutes from './routes/index';
 const app = express();
 app.use(express.json());
 
@@ -8,7 +8,7 @@ app.get('/',(req,res)=>{
 });
 
 
-app.use('/api',blogRoute)
+app.use('/api',blogRoutes)
 const port = 3000;
 
 

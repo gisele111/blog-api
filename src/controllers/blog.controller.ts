@@ -1,9 +1,9 @@
 import { Request,Response } from 'express';
-import createBlog from '../services/blog';
+import {createBlog,getAll} from '../services/blog';
+import { get } from 'http';
 
 
 const createController = async (req:Request,res:Response)=>{
-    console.log(req.body);
     const {title,content} = req.body;
     try {
     const data =  await createBlog(title,content);
@@ -13,5 +13,13 @@ const createController = async (req:Request,res:Response)=>{
     }
 }
 
-export default createController
+const getData = async(req:Request,res:Response)=>{
+    const allData  = await getAll();
+    res.status(200).json({data:allData});
+}
+
+export {
+    createController,
+    getData
+}
 
